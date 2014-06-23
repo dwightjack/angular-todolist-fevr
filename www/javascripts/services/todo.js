@@ -1,32 +1,25 @@
 angular.module('todoListApp')
-	.factory('todoService', ['$resource', function ($resource) {
+	.factory('todoService', [function () {
 
-		var _todos = [];
-
-		var todoRes = $resource('/api/todos/:id', {
-			id: '@_id'
-		}, {
-			update: { method: 'PUT' }
-		});
 
 		//mocking some default todos
-		/*_todos = [{
+		var _todos = [{
 			_id: 1,
-			title: 'test title',
+			title: 'Learn AngularJS',
 			completed: false,
 			date: +(new Date())
 		},
 		{
 			_id: 2,
-			title: 'test title 2',
-			completed: true,
+			title: 'Watch "24" S09',
+			completed: false,
 			date: +(new Date()) + 1
 		}, {
 			_id: 3,
-			title: 'test title 3',
+			title: 'Buy beer',
 			completed: true,
 			date: +(new Date()) + 2
-		}];*/
+		}];
 
 		return {
 			getAll: function () {
@@ -34,27 +27,18 @@ angular.module('todoListApp')
 			},
 
 			load: function () {
-				todoRes.get(function (data) {
-					_todos.push.apply(_todos, data.body);
-				});
 				return _todos;
 			},
 
 			store: function (params, callback) {
                 var cb = callback || angular.noop;
-				/*var todo = angular.extend({}, params);
+				var todo = angular.extend({}, params);
 				if (!todo._id) {
-					todo._id = Math.max.apply(null, _todos.map(function (el) { return el._id})) + 1;
+					todo._id = _todos.length ? Math.max.apply(null, _todos.map(function (el) { return el._id; })) + 1 : 1;
 				}
 				_todos.push(todo);
-                 cb(false, todo);
-				*/
-				todoRes.save({}, params, function (data) {
-                    if (!data.error) {
-						_todos.push(data.body);
-					}
-                    cb(data.error, data.body);
-                });
+                cb(false, todo);
+
 			},
 
 			reset: function () {
@@ -76,11 +60,7 @@ angular.module('todoListApp')
 			update: function (id, data) {
 				var todo = this.get(id);
 
-				todoRes.update({id: id}, data, function () {
-					angular.extend(todo, data || {});
-				});
-
-				//angular.extend(todo, data || {});
+				angular.extend(todo, data || {});
 			},
 
 			remove: function (id) {
@@ -95,9 +75,7 @@ angular.module('todoListApp')
 					}
 				});
 				if (angular.isNumber(idx)) {
-					todoRes.delete({id: id}, function () {
-						_todos.splice(idx, 1);
-					});
+					_todos.splice(idx, 1);
 				}
 			},
 
