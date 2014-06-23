@@ -1,4 +1,4 @@
-/*global beforeEach, afterEach, describe, expect, it, spyOn, xdescribe, xit, inject, module */
+/*global beforeEach, jasmine, describe, expect, it, inject, module */
 describe('todoService tests', function() {
 	var todoService, $httpBackend;
 
@@ -83,12 +83,10 @@ describe('todoService tests', function() {
 		var todos = [{
 			_id: 1,
 			title: 'title',
-			description: 'description',
 			completed: true
 		}, {
 			_id: 2,
 			title: 'title',
-			description: 'description',
 			completed: false
 		}];
 
@@ -113,11 +111,9 @@ describe('todoService tests', function() {
 		var todos = [{
 			_id: 1,
 			title: 'title',
-			description: 'description'
 		}, {
 			_id: 1,
 			title: 'title',
-			description: 'description'
 		}];
 
 		$httpBackend.expectGET('/api/todos').respond({error: false, body: todos});

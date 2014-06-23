@@ -28,19 +28,12 @@
 
 					<fieldset class="col-xs-offset-1 col-xs-11">
 
-						<div class="form-group" ng-class="{'has-error': isInvalid('title')}">
+						<div class="form-group">
 							<label for="title" class="sr-only">Titolo</label>
 							<input type="text" class="form-control" id="title" name="title" ng-model="todo.title" placeholder="Titolo nuovo task (obbligatorio)" required="true" />
-							<div class="help-block" ng-show="isInvalid('title')">Inserisci il titolo del task</div>
-						</div>
-
-						<div class="form-group">
-							<label for="description" class="sr-only">Descrizione</label>
-							<textarea class="form-control" name="description" id="description" cols="30" rows="2" ng-model="todo.description" placeholder="Descrizione del task"></textarea>
 						</div>
 
 						<button class="btn btn-primary" type="submit" ng-disabled="todoForm.$invalid || isSubmitting"><small class="glyphicon glyphicon-floppy-disk"></small> Salva</button>
-						<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" ng-show="isSubmitting"></span>
 					</fieldset>
 
 				</form>
@@ -62,13 +55,7 @@
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-11" class="todo-item">
-								<h1 class="list-group-item-heading h4">{{todo.title}}</h1>
-								<p ng-show="todo.description">
-									<a href="" class="small" ng-click="toggleDescription(todo)">dettagli <span class="caret" ng-class="{'caret-reverse': todo.expanded}"></span></a>
-								</p>
-								<p class="list-group-item-text" ng-class="todo.expanded ? '' : 'hide'">
-									{{todo.description}}
-								</p>
+								<h1 class="list-group-item-heading h4" ng-click="toggleCompleted(todo)">{{todo.title}}</h1>
 							</div>
 						</div>
 					</article>

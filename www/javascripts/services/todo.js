@@ -13,22 +13,19 @@ angular.module('todoListApp')
 		/*_todos = [{
 			_id: 1,
 			title: 'test title',
-			description: 'test description',
 			completed: false,
 			date: +(new Date())
 		},
 		{
 			_id: 2,
 			title: 'test title 2',
-			description: 'test description 2',
 			completed: true,
 			date: +(new Date()) + 1
 		}, {
 			_id: 3,
 			title: 'test title 3',
-			description: 'test description 3',
 			completed: true,
-			date: +(new Date()) + 1
+			date: +(new Date()) + 2
 		}];*/
 
 		return {

@@ -20,7 +20,11 @@ var responseCallback = function (res, err, body) {
 	res.json(response);
 };
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.use(bodyParser.json());
+
 
 app.get('/api/todos', function (req, res) {
 	todoDB.find({}).sort({date: 1}).exec(responseCallback.bind(null, res));

@@ -1,6 +1,6 @@
-/*global beforeEach, afterEach, describe, expect, it, spyOn, xdescribe, xit, inject, module */
+/*global jasmine, beforeEach, describe, expect, it, spyOn, inject, module */
 describe('FormController tests', function() {
-	var $rootScope, $scope, $controller, state, todoService, ctrl;
+	var $rootScope, $scope, $controller, todoService, ctrl;
 
 	beforeEach(function() {
 
@@ -50,8 +50,7 @@ describe('FormController tests', function() {
 
 		//mock todo form object
 		var todo = {
-			'title': 'test title',
-			'description': 'test description'
+			'title': 'test title'
 		};
 
 		$scope.todo = todo;
@@ -67,23 +66,6 @@ describe('FormController tests', function() {
 
 	it('should have a method to verify submission state', function () {
 		expect($scope.isSubmitting).toBeDefined();
-	});
-
-	it('should have a method to check for errors in fields', function () {
-
-		expect(angular.isFunction($scope.isInvalid)).toBe(true);
-
-		//mocking
-		$scope.todoForm.$dirty = true;
-		$scope.todoForm.$invalid = true;
-		$scope.todoForm.$valid = false;
-		$scope.todoForm.title = {
-			$invalid: true,
-			$dirty: true
-		};
-
-		expect($scope.isInvalid('title')).toBe(true);
-
 	});
 
 });

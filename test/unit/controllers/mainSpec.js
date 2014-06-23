@@ -1,6 +1,6 @@
-/*global beforeEach, afterEach, describe, expect, it, spyOn, xdescribe, xit, inject, module */
+/*global beforeEach, describe, expect, it, spyOn, inject, module */
 describe('MainController tests', function() {
-	var $rootScope, $scope, $controller, state, todoService, ctrl;
+	var $rootScope, $scope, $controller, todoService, ctrl;
 
 	beforeEach(function() {
 
@@ -36,8 +36,6 @@ describe('MainController tests', function() {
 
 		expect(todoService.getAll).toHaveBeenCalled();
 	});
-
-
 
 });
 

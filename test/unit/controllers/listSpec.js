@@ -1,6 +1,6 @@
-/*global beforeEach, afterEach, describe, expect, it, spyOn, xdescribe, xit, inject, module */
+/*global beforeEach, describe, jasmine, expect, it, spyOn, inject, module */
 describe('ListController tests', function() {
-	var $rootScope, $scope, $controller, state, todoService, ctrl;
+	var $rootScope, $scope, $controller, todoService, ctrl;
 
 	beforeEach(function() {
 
@@ -36,7 +36,6 @@ describe('ListController tests', function() {
 		var todo = {
 			_id: 1,
 			'title': 'test title',
-			'description': 'test description',
 			'completed': false
 		};
 
@@ -51,30 +50,10 @@ describe('ListController tests', function() {
 
 	});
 
-	it('should have a method to toggle todo description', function () {
-
-		//mocking a todo
-		var todo = {
-			'title': 'test title',
-			'description': 'test description',
-			'completed': false
-		};
-		$scope.toggleDescription(todo);
-
-		expect(todo.expanded).toBeDefined();
-		expect(todo.expanded).toBe(true);
-
-		$scope.toggleDescription(todo);
-
-		expect(todo.expanded).toBe(false);
-
-	});
-
 	it('should remove a todo by its id', function () {
 		var todo = {
 			_id: 1,
 			'title': 'test title',
-			'description': 'test description',
 			'completed': false
 		};
 

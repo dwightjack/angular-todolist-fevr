@@ -48,8 +48,8 @@ module.exports = function(grunt) {
 				base: '<%= paths.www %>',
 				livereload: true,
 				middleware: function(connect, options, middlewares) {
-					middlewares.push(require('./server'));
-					return middlewares;
+					var mids = [require('./server')].concat(middlewares);
+					return mids;
 				}
 
 			},

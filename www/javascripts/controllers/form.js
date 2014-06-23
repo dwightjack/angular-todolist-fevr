@@ -12,9 +12,4 @@ angular.module('todoListApp')
 			}
 		};
 
-		$scope.isInvalid = function (inputName) {
-			var el = inputName ? $scope.todoForm[inputName] : $scope.todoForm;
-			return el.$dirty && el.$invalid;
-		};
-
 	}]);

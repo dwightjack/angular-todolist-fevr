@@ -7,14 +7,6 @@ angular.module('todoListApp')
 			todoService.load();
 		}
 
-		$scope.toggleDescription = function (todo) {
-			if (!todo.hasOwnProperty('expanded')) {
-				todo.expanded = true;
-			} else {
-				todo.expanded = !todo.expanded;
-			}
-		};
-
 		$scope.toggleCompleted = function (todo) {
 			//todo.completed = !todo.completed;
 			todoService.update(todo._id, {completed: !todo.completed});
@@ -22,7 +14,6 @@ angular.module('todoListApp')
 
 		$scope.remove = function (todo) {
 			todoService.remove(todo._id);
-		}
-
+		};
 
 	}]);
