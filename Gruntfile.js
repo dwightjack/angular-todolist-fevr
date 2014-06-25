@@ -97,6 +97,6 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['less', 'connect:server', 'karma:unit:start', 'watch']);
+	grunt.registerTask('default', ['less', 'connect:server', /*'karma:unit:start',*/ 'watch']);
 
 };
